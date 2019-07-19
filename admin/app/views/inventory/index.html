@@ -1,0 +1,114 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a ui-sref="dashboard">dashboard</a></li>
+                <li class="breadcrumb-item active">Product list</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                        <h3 class="card-title">รายการสินค้า</h3>
+
+                        <div class="card-tools">
+                            <button type="button" ui-sref="inventory-create" class="btn btn-info "><i class="fa fa-plus"></i> เพิ่มสินค้า</button>
+                        </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-3">
+                          <!-- <table id="table" class="table table-hover table-bordered text-center" width="100%"></table> -->
+                          <table class="table table-hover text-center table-bordered" >
+                            <thead>
+                              <tr>
+                                <th>ลำดับ</th>
+                                <th>รูปภาพ</th>
+                                <th>ชื่อสินค้า</th>
+                                <th>ไฮไลท์</th>
+                                <th>ราคา</th>
+                                <th>ยอดวิว</th>
+                                <th>สถานะ</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                
+                            <tbody>  
+                              <tr ng-repeat="data in items">
+                                <td>{{$index+1}}</td>
+                                <td><img ng-src="{{data.image |reverseImage }}" class="img-fluid" width="200px"></td>
+                                <td>{{data.subject}}</td>
+                                <td>{{data.title}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">
+                                        <span class="badge badge-light">{{data.price}} </span> บาท 
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fas fa-chart-bar"></i>  <span class="badge badge-light">{{data.views}}</span>
+                                        <span class="sr-only">unread messages</span>
+                                    </button>
+                                </td>
+                                <td>
+                                  <switch ng-model="data.status" ng-change="activeProduct(data.status , data.id)" 
+                                  on="active" off="block" class="wide"></switch> 
+                                </td>
+                                <!-- <td><a ui-sref="event-edit({ key: data.key })"><i class="fa fa-edit fa-2x"></i></a></td> -->
+                                <!-- <td><a href="" ng-click="DeleteEvent(data.id)"><i class="fa fa-trash-o fa-2x"></i></a></td> -->
+                                <td>
+                                  <div class="btn-group ">
+                                    <a ui-sref="inventory-edit({ id: data.id })" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a>
+                                    <a ng-click="deleteProduct(data)" class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></a>
+                                  </div>
+                                  
+                                  
+                                </td>
+
+                              </tr>
+                            </tbody>
+                
+                          </table>
+
+                          <!-- pagination -->
+                          <nav aria-label="Page navigation example"></nav>
+                            <ul ng-if="pager.pages.length" class="pagination float-right pt-2" >
+                                <li class="page-item" ng-class="{disabled:pager.currentPage === 1}">
+                                    <a  class="page-link" ng-click="setPage(1)">First</a>
+                                </li>
+                                <li class="page-item" ng-class="{disabled:pager.currentPage === 1}">
+                                    <a  class="page-link" ng-click="setPage(pager.currentPage - 1)">Previous</a>
+                                </li>
+                                <li class="page-item" ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                                    <a  class="page-link" ng-click="setPage(page)">{{page}}</a>
+                                </li>                
+                                <li class="page-item" ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a  class="page-link" ng-click="setPage(pager.currentPage + 1)">Next</a>
+                                </li>
+                                <li class="page-item" ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a  class="page-link" ng-click="setPage(pager.totalPages)">Last</a>
+                                </li>
+                            </ul>
+                          </nav>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,123 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <!-- <h1>เพิ่มรายการสินค้า</h1> -->
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a ui-sref="dashboard">dashboard</a></li>
+                <li class="breadcrumb-item"><a ui-sref="inventory">Product List</a></li>
+                <li class="breadcrumb-item active">Edit product</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content" ng-show="product">
+      <div class="card card-default">
+        <div class="card-header pb-3">
+          <h3 class="card-title">แก้ไขข้อมูลสินค้า</h3>
+          <div class="card-tools">
+              <button class="btn btn-success text-white" ng-disabled="!userForm.$valid" ng-click="editProduct(product)">บันทึกสินค้า</button>
+          </div>
+        </div>
+        <!-- form start -->
+        <form name="userForm" novalidate>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-4 col-md-12">
+        
+                <!-- Profile Image -->
+                <div class="card card-primary card-outline">
+                  <div class="card-body box-profile">
+                    <div class="form-group text-center" style="margin-top:40px !important;" ng-hide="uploader.queue.length">
+                      <img ng-src="{{product.image | reverseImage}}"  class="img-fluid" ng-if="product.image" >
+                    </div>
+                    
+                    <button class="fileUpload btn btn-primary btn-block" type="button" ng-hide="uploader.queue.length">
+                      <span>เลือกรูปภาพ <i class="fa fa-upload"></i></span>
+                      <input type="file" class="upload" nv-file-select="" uploader="uploader" />
+                    </button>
+                    <br/>
+                    <div ng-repeat="item in uploader.queue" class="text-center">
+                      <img ng-show="uploader.isHTML5" ng-thumb="{ file: item._file }" class="img-fluid p-3">
+                    </div>
+                    <div ng-show="uploader.queue.length" class="text-center">
+                      <div ng-if="complete" class="mb-2">
+                        Queue progress:
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" ng-class="{'active': complete}" ng-style="{ 'width': uploader.progress + '%' }">{{uploader.progress}}%</div>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-success" ng-click="uploader.uploadAll()">
+                        <span ng-hide="!uploader.getNotUploadedItems().length">
+                          <span class="glyphicon glyphicon-upload"></span> 
+                          <span>อัพโหลด</span>  
+                        </span>
+                        <span ng-show="!uploader.getNotUploadedItems().length">
+                          <i class="fa fa-check-square-o"></i>
+                          <span>อัพโหลดสำเร็จ</span>
+                        </span>
+                      </button>
+                      <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()">
+                        <span class="glyphicon glyphicon-trash"></span> ลบรูปภาพ
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+        
+                <!-- About Me Box -->
+                <div class="card card-primary">
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="form-group">
+                        <label for="subject">ชื่อสินค้า (Title)</label>
+                        <input type="text" class="form-control" id="subject" name="subject" ng-model="product.subject" required="" ng-maxlength="255">
+                        <span class="text-danger" ng-show="userForm.subject.$error.maxlength">Subject must be 255 character maximum</span>
+                        <span class="text-danger" ng-show="userForm.subject.$error.required && !userForm.subject.$pristine">Subject is required</span>
+                    </div>
+                    
+                    <div class="form-group w-50">
+                        <label for="price">ราคาขาย (Price)</label>
+                        <div class="input-area">
+                            <input type="number" step="any" class="form-number" ng-model="product.price">
+                            <label class="number-label">บาท</label>
+                        </div>
+                    </div> 
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <div class="col-lg-8 col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="form-group">
+                        <label for="title">ไฮไลท์ (Highlight)</label>
+                        <textarea cols="30" rows="4" class="form-control" name="title" ng-model="product.title" ng-maxlength="255" required></textarea>
+                        <span class="text-danger" ng-show="userForm.title.$error.maxlength">Highlight must be 255 character maximum</span>
+                        <span class="text-danger" ng-show="userForm.title.$error.required && !userForm.title.$pristine">Highlight is required</span>
+                    </div>  
+                    <div class="form-group">
+                        <label for="title">รายละเอียดสินค้า (Description)</label>
+                        <textarea class="" id="editor" rows="5" cols="80"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </form>
+      </div>    
+    </section>
+</div>
+
+

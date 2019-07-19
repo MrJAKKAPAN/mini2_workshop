@@ -1,0 +1,54 @@
+<div class="container"  ng-show="items">
+    <div class="row">
+        <div class="col-12 py-5">
+            <div class="card">
+                <div class="card-body my-5">
+                    <h2 class="card-title text-center">New Products</h2>
+                    <p class="card-text text-center">สินค้าใหม่ล่าสุด</p> 
+                    <div class="row px-3">
+                        <div class="col-sm-6 col-md-4 col-xl-3 p-1" ng-repeat="item in items">
+                            <div class="card h-100">
+                                <div class="img-resize">
+                                    <a ui-sref="product-detail({ 'id': item.id})" class="">
+                                        <img class="img-fluid" ng-src="{{item.image |reverseImage }}" alt="Card image cap">
+                                    </a>
+                                </div>
+                                <div class="card-body px-2 py-3">
+                                    <h6 class="card-title  text-muted mb-0">{{item.subject}}</h6>
+                                </div>
+                                <div class="footer-area px-2">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="star-rating">
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <div class="star-current" style="width: {{item.star}}%;">
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                </div>
+                                            </div>
+                                            <p class="m-0" style=" color: #888;">
+                                            {{item.views | number}} views </p>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                            <p class="m-0">Price</p>
+                                            <p class="font-weight-bold text-danger">
+                                                {{item.price | number}}.-
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

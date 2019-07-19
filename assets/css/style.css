@@ -1,0 +1,43 @@
+html body {
+    background-color: #f6f6f6;
+}
+
+/* ☆★ */
+.star-rating {
+    position: relative;
+    font-size: 1em;
+    color: #faca51;
+    display: inline-block;
+}
+
+.star-current {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.breadcrumb{
+    background-color: #f9f9f9;
+}
+
+.img-resize {
+    display: block;
+    max-height: 205px;
+    text-align: center;
+    padding: 5px; 
+}
+
+.img-resize img {
+    height: 205px;
+    transition: 0.5s;
+}
+
+.img-resize img:hover {
+    transform: scale(1.05)
+}
+
+.footer-area {
+    background-color: white;
+    border: 0!important;
+}

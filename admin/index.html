@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="../assets/images/favicons/site.webmanifest">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap4.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-notification/dist/angular-ui-notification.min.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-switch/angular-ui-switch.min.css">
+    <title>Admin AppzStory</title>
+</head>
+<body class="sidebar-mini hold-transition login-page" >
+    
+
+    <div class="wrapper">
+        <div ng-include="getLayout('sidebar')"></div>
+        <div ui-view></div>
+        <div ng-include="getLayout('footer')"></div>
+    </div>
+
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/stateEvents.min.js"></script>
+    <script src="node_modules/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="node_modules/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+    <script src="node_modules/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="node_modules/angular-ui-switch/angular-ui-switch.min.js"></script>
+    <script src="node_modules/angular-ui-switch/angular-ui-switch.min.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+
+
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- CK Editor -->
+    <script src="plugins/ckeditor/ckeditor.js"></script>
+    <!-- DataTables -->
+    <script src="plugins/datatables/jquery.dataTables.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap4.js"></script>            
+
+
+    <script src="app/app.js"> </script>
+    <!-- controllers -->
+    <script src="app/controllers/dashboardCtrl.js"> </script>
+    <script src="app/controllers/inventoryCtrl.js"> </script>
+    <script src="app/controllers/inventoryCreateCtrl.js"> </script>
+    <script src="app/controllers/inventoryEditCtrl.js"> </script>
+    <script src="app/controllers/AuthCtrl.js"></script>
+
+    <script src="app/services/AuthService.js"></script>
+    <script src="app/services/InventoryService.js"></script>
+    <script src="app/services/PaginateService.js"></script>    
+    
+</body>
+</html>
